@@ -35,13 +35,13 @@ function HomePage() {
     <>
       <Navbar />
       <div className="title-arc">
-        <svg width="100%" height="210" viewBox="0 0 600 80">
+        <svg width="1400px" height="210" viewBox="0 0 600 80">
           <path
             id="arcPath"
             d="M 20,40 Q 300,0 580,40" 
             fill="transparent"
           />
-          <text fontSize="33" fontWeight="bold" fontStyle="italic" textAnchor="middle">
+          <text style={{fontSize: 'calc(5px + 2vw)'}} fontWeight="bold" fontStyle="italic" textAnchor="middle">
             <textPath href="#arcPath" startOffset="50%">
               Hey there! Welcome to our blog.
             </textPath>
