@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+html, body, #root {
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: auto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  min-width: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-optical-sizing: none;
+}
+
+:root {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  /*background: linear-gradient(90deg, #151515 0%, #1c1c1c 15%, #1c1c1c 85%, #151515 100%);*/
+
+  --nimbial-orange: #da7228;
+  --symphony-pink: #ee29ca;
+  --border-color: #0002;
+  --bg-color: #fff;
+  --text-color: #1c1c1c;
+
+  color: var(--text-color);
+  background: var(--bg-color);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark-mode {
+  --border-color: #fff1;
+  --bg-color: #1c1c1c;
+  --text-color: #d9d9d9;
+}
+
+[text-style="display"] {
+  font-family: "Instrument Serif", sans-serif;
+}
+
+[color-type="accent-color"] {
+  color: #c56ec9;
+}
+
+[color-type="icon-color"] {
+  color: #ffffff;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  box-sizing: border-box;
+  min-height: 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  align-items: center;
+  /* outline: 1px solid white; */
+}
+
+::selection {
+  background: #ffffff11;
+  color: auto;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  background-color: inherit;
+  color: inherit;
+  border: 0px solid transparent;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: filter 0.4s;
+}
+button:hover {
+  filter: brightness(1.2);
+}
+button:focus {
+  outline: none;
+}
+span {
+  margin: 0;
+}
+input {
+  margin: 0;
+}
+hr {
+  margin: 40px 0;
+}
+.hr {
+  width: 4px;
+  display: block;
+  background: #3c3c3c;
+  margin: 4px 8px;
+  border-radius: 999px;
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}

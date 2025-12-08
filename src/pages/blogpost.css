@@ -1,0 +1,150 @@
+.blog-post-container {
+    margin-top: 180px;
+    width: calc(min(100% - 100px, 1000px));
+}
+
+/* ----- Base Typography ----- */
+.markdown-body {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #222;
+  margin-bottom: 150px;
+}
+
+.markdown-body a {
+  color: #1e74f5;
+  
+}
+
+/* ----- Titles (H1 & H2 use Instrument Serif) ----- */
+.markdown-body h1,
+.markdown-body h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.markdown-body h1 {
+  font-size: 2rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.6rem;
+}
+
+/* ----- Triple Hash Titles (slightly larger than text, bold but not too bold) ----- */
+.markdown-body h3 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 1.15rem; /* Slightly larger than body text */
+  font-weight: 600; /* Bold but not too bold */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ----- Quintuple Hash Titles ----- */
+.markdown-body h5 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-weight: 400;
+  margin-top: 0;
+  font-style: italic;
+  margin-bottom: 1.2rem;
+  translate: 0 -10px;
+}
+
+/* ----- Notes (blocks with > or Note: depending on your MD) ----- */
+.markdown-body blockquote {
+  background: #7771; /* subtle tinted background */
+  border-left: 4px solid #7774;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  color: #333;
+}
+
+/* Remove large blockquote italics */
+.markdown-body blockquote p {
+  margin: 0;
+  font-style: normal;
+}
+
+/* ----- Code Blocks ----- */
+.markdown-body pre {
+  background: #7771; /* same as note background */
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+}
+
+.markdown-body code {
+  font-family: 'Google Sans Code', monospace;
+}
+
+/* Inline code */
+.markdown-body p code {
+  background: #7771;
+  padding: 0.15rem 0.35rem;
+  border-radius: 5px;
+}
+
+/* Images */
+.markdown-body img {
+  max-width: 100%;
+  max-height: 440px;
+  height: auto;
+  margin: 0.4rem 0 0 0;
+  border-radius: 6px;
+}
+
+.article-image {
+  background: #eee;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+.article-title {
+  font-size: 3.5rem;
+  font-weight: 550;
+  margin: 5px 0;
+}
+
+.article-author {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #777;
+  margin: 5px 0;
+}
+
+.article-category {
+  display: flex;
+  width: fit-content;
+  font-size: 0.8rem;
+  border: 1px solid #50ac2f;
+  background-color: #50ac2f22;
+  color: #50ac2f;
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  border-radius: 999px;
+  padding: 3px 5px;
+}
+
+.article-date {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 5px 0;
+}
+
+.article-description {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #777;
+  margin: 5px 0;
+  font-style: italic;
+  margin-bottom: 50px;
+}

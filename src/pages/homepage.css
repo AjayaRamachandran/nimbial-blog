@@ -1,0 +1,123 @@
+.main-banner {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title-arc {
+  margin-top: 150px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Instrument Serif', serif;
+}
+
+.subtitle {
+  font-size: calc(1vw + 8px);
+  translate: 0 -90px;
+}
+
+.title-bar {
+  margin-top: 0px;
+  width: calc(min(100% - 100px, 1000px));
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.0px;
+  box-sizing: border-box;
+  font-family: 'Instrument Serif', serif;
+}
+
+.homepage-grid-container {
+  mask-image: linear-gradient(90deg, #ffff 95%, #0000 100%);
+  width: calc(min(100% - 100px, 1000px));
+}
+
+.homepage-grid {
+  display: flex;
+  overflow-x: scroll;
+  gap: 20px;
+  padding: 20px 50px 20px 0;
+  box-sizing: border-box;
+}
+
+.blog-card {
+  flex: 0 0 auto; /* do NOT shrink; use width as fixed */
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  transition: filter 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.blog-card:hover {
+  filter: brightness(0.97);
+}
+
+.blog-card-image {
+  background: #eee;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+.blog-card-title {
+  font-size: 1.1rem;
+  font-weight: 550;
+  margin: 5px 0;
+}
+
+.blog-card-author {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #777;
+  margin: 5px 0;
+}
+
+.blog-card-category {
+  display: flex;
+  width: fit-content;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin: 10px 0 15px 0;
+  border-radius: 999px;
+  padding: 3px 5px;
+}
+.blog-card-category.opinion {
+  border: 1px solid #50ac2f;
+  background-color: #50ac2f22;
+  color: #50ac2f;
+}
+.blog-card-category.product {
+  border: 1px solid #ac722f;
+  background-color: #ac722f22;
+  color: #ac722f;
+}
+
+.blog-card-date {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #777;
+  margin: 5px 0;
+}
+
+.blog-card-description {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-color);
+  margin: 5px 0;
+}
+
+.blog-card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.blog-card a:hover {
+  text-decoration: underline;
+}
