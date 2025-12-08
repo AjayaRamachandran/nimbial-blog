@@ -16,7 +16,7 @@ But let's say, you're all about efficiency. You don't want to say all that; you 
 
 We can imagine the information as a whole with a box, whose area represents the size of the task. The height of the box is the amount of inference that we expect from a model trying to execute the task, and the width is how much specificity we get over how it does that task.
 
-![task box analogy](https://example.com/123)
+![task box analogy](https://www.dropbox.com/scl/fi/k6ioji02b5aok5rghq5z4/data-box-diagram-1.png?rlkey=at7plrey6gmxbtutt04le61dn&st=x3cw4hey&raw=1)
 
 If we assume the area of the box to be the informational "size" of the task, we can assume it must be roughly constant for any given task, regardless of the specificity (the width of the box). Thus, as the specificity decreases, the models "extrude" (infer) more to get to the same product. This isn't meant to prove anything mathematically, but it serves as a mental model for why inference and specificity are sort of inversely related.
 
