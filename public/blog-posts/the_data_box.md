@@ -2,7 +2,7 @@ We've all seen the demos. The flashy new products that seem to crop up every few
 
 *Side note, before I get into the weeds of it, I want to say that this article is mainly talking about AI in the context of coding agents, although the ideas here still apply to other subjects.*
 
-Imagine an assistant. A human assistant. In intern, let's say. Let's suppose you've never met this intern, and you need them to make you a coffee. If this intern is not very good at making coffee, you might have to be very specific with your instructions. Your request might be something like this:
+Imagine an assistant. A human assistant. An intern, let's say. Let's suppose you've never met this intern, and you need them to make you a coffee. If this intern is not very good at making coffee, you might have to be very specific with your instructions. Your request might be something like this:
 
 > "Please turn on the coffee machine, press the 10oz button, and wait a minute. When the machine finishes warming up, place a mug underneath the spout and press the "Go" button. Once the coffee is done brewing and fills the mug, please add 1 sugar packet (found next to the machine) and a few drops of creamer, stir it, then bring it to me.
 
