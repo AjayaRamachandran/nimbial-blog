@@ -1,11 +1,11 @@
 export const config = {
-  runtime: 'edge',
+  runtime: "edge",
 };
 
 function injectOrReplaceMeta(html, tags) {
   let out = html;
   const ensure = (selector, tagHtml) => {
-    const rx = new RegExp(`<meta[^>]+${selector}[^>]*>`, 'i');
+    const rx = new RegExp(`<meta[^>]+${selector}[^>]*>`, "i");
     if (rx.test(out)) {
       out = out.replace(rx, tagHtml);
     } else {
@@ -25,49 +25,62 @@ export default async function handler(req) {
   try {
     const url = new URL(req.url);
     const origin = url.origin;
-    const segments = url.pathname.split('/');
-    const name = decodeURIComponent(segments.pop() || '');
+    const segments = url.pathname.split("/");
+    const name = decodeURIComponent(segments.pop() || "");
 
     // Fetch post metadata JSON
     let post;
     try {
-      const metaRes = await fetch(`${origin}/blog-posts/${name}.json`, { cache: 'no-cache' });
+      const metaRes = await fetch(`${origin}/blog-posts/${name}.json`, {
+        cache: "no-cache",
+      });
       if (metaRes.ok) {
         post = await metaRes.json();
       }
     } catch {}
 
-    const title = post?.title || 'Read it on the Nimbial Blog';
-    const description = 'Read it on the Nimbial Blog';
+    const title = post?.title || "Read it on the Nimbial Blog";
+    const description = "Read it on the Nimbial Blog";
     // Ensure absolute image URL for crawlers
-    const rawImage = post?.img_url || '/assets/link-preview.png';
-    const image = rawImage.startsWith('http') ? rawImage : `${origin}${rawImage.startsWith('/') ? '' : '/'}${rawImage}`;
-    const siteName = 'Nimbial - Blog';
+    const rawImage = post?.img_url || "/assets/link-preview.png";
+    const image = rawImage.startsWith("http")
+      ? rawImage
+      : `${origin}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+    const siteName = "Nimbial - Blog";
 
     // Fetch the built index.html to preserve scripts/styles
-    const baseHtmlRes = await fetch(`${origin}/index.html`, { cache: 'no-cache' });
+    const baseHtmlRes = await fetch(`${origin}/index.html`, {
+      cache: "no-cache",
+    });
     let html = await baseHtmlRes.text();
 
     const tags = [
-      { attr: 'property', key: 'og:type', content: post ? 'article' : 'website' },
-      { attr: 'property', key: 'og:site_name', content: siteName },
-      { attr: 'property', key: 'og:title', content: title },
-      { attr: 'property', key: 'og:description', content: description },
-      { attr: 'property', key: 'og:image', content: image },
-      { attr: 'property', key: 'og:url', content: url.href },
-      { attr: 'name', key: 'twitter:card', content: 'summary_large_image' },
-      { attr: 'name', key: 'twitter:title', content: title },
-      { attr: 'name', key: 'twitter:description', content: description },
-      { attr: 'name', key: 'twitter:image', content: image },
+      {
+        attr: "property",
+        key: "og:type",
+        content: post ? "article" : "website",
+      },
+      { attr: "property", key: "og:site_name", content: siteName },
+      { attr: "property", key: "og:title", content: title },
+      { attr: "property", key: "og:description", content: description },
+      { attr: "property", key: "og:image", content: image },
+      { attr: "property", key: "og:url", content: url.href },
+      { attr: "name", key: "twitter:card", content: "summary_large_image" },
+      { attr: "name", key: "twitter:title", content: title },
+      { attr: "name", key: "twitter:description", content: description },
+      { attr: "name", key: "twitter:image", content: image },
     ];
 
     html = injectOrReplaceMeta(html, tags);
 
     // Also update the <title>
-    html = html.replace(/<title>[^<]*<\/title>/i, `<title>${title} · Nimbial Blog<\/title>`);
+    html = html.replace(
+      /<title>[^<]*<\/title>/i,
+      `<title>${title} · Nimbial Blog<\/title>`,
+    );
 
     return new Response(html, {
-      headers: { 'content-type': 'text/html; charset=utf-8' },
+      headers: { "content-type": "text/html; charset=utf-8" },
       status: 200,
     });
   } catch (err) {
@@ -91,6 +104,9 @@ export default async function handler(req) {
       <div id="root"></div>
       <script type="module" src="/src/main.jsx"></script>
     </body></html>`;
-    return new Response(fallback, { headers: { 'content-type': 'text/html; charset=utf-8' }, status: 200 });
+    return new Response(fallback, {
+      headers: { "content-type": "text/html; charset=utf-8" },
+      status: 200,
+    });
   }
 }
