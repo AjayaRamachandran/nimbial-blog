@@ -4,7 +4,6 @@ import "./homepage.css";
 
 import Navbar from "@/components/Navbar";
 import { DarkModeContext } from "@/context/DarkModeContext";
-import { resetOGToDefaults } from "@/utils/seo";
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -12,9 +11,6 @@ function HomePage() {
   const { darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
-    // Ensure default OG tags on homepage
-    resetOGToDefaults();
-
     async function loadPosts() {
       try {
         const listRes = await fetch("/blog-posts/pages.json");
@@ -38,7 +34,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div className={darkMode ? `dark-mode` : ``}>
+    <>
       <Navbar />
       <div className="title-arc">
         <svg width="1400px" height="250" viewBox="0 0 600 80">
@@ -49,7 +45,7 @@ function HomePage() {
             fontStyle="italic"
             textAnchor="middle"
           >
-            <textPath href="#arcPath" startOffset="50%">
+            <textPath href="#arcPath" startOffset="50%" fill="var(--text-color)">
               Hey there! Welcome to our blog.
             </textPath>
           </text>
@@ -94,7 +90,7 @@ function HomePage() {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
