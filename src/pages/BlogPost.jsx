@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./blogpost.css";
+import { updateOG, resetOGToDefaults } from "@/utils/seo";
 
 function BlogPost() {
   const { name } = useParams();
@@ -18,6 +19,14 @@ function BlogPost() {
         const metaData = await metaRes.json();
         setMeta(metaData);
 
+        // Update Open Graph/Twitter tags for this article
+        updateOG({
+          type: "article",
+          title: metaData.title,
+          description: "Read it on the Nimbial Blog",
+          image: metaData.img_url,
+        });
+
         // Load the markdown file
         const mdRes = await fetch(`/blog-posts/${name}.md`);
         const mdText = await mdRes.text();
@@ -28,6 +37,11 @@ function BlogPost() {
     }
 
     loadArticle();
+
+    return () => {
+      // Restore defaults when navigating away
+      resetOGToDefaults();
+    };
   }, [name]);
 
   return (

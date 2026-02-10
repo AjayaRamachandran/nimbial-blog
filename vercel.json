@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/pages/:name", "destination": "/api/pages/:name" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }

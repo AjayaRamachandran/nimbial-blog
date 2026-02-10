@@ -38,6 +38,9 @@ html, body, #root {
   --bg-color: #fff;
   --text-color: #1c1c1c;
 
+  --tinted-bg-color: #7771;
+  --bg-color-transparent: #fff3;
+
   color: var(--text-color);
   background: var(--bg-color);
   
@@ -49,6 +52,7 @@ html, body, #root {
 .dark-mode {
   --border-color: #fff1;
   --bg-color: #1c1c1c;
+  --bg-color-transparent: #1c1c1c77;
   --text-color: #d9d9d9;
 }
 
