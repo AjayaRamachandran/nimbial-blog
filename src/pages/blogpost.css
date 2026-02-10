@@ -1,11 +1,11 @@
 .blog-post-container {
-    margin-top: 180px;
-    width: calc(min(100% - 100px, 1000px));
+  margin-top: 180px;
+  width: calc(min(100% - 100px, 1000px));
 }
 
 /* ----- Base Typography ----- */
 .markdown-body {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.65;
   color: #222;
@@ -14,13 +14,12 @@
 
 .markdown-body a {
   color: #1e74f5;
-  
 }
 
 /* ----- Titles (H1 & H2 use Instrument Serif) ----- */
 .markdown-body h1,
 .markdown-body h2 {
-  font-family: 'Instrument Serif', serif;
+  font-family: "Instrument Serif", serif;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -37,7 +36,7 @@
 
 /* ----- Triple Hash Titles (slightly larger than text, bold but not too bold) ----- */
 .markdown-body h3 {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 1.15rem; /* Slightly larger than body text */
   font-weight: 600; /* Bold but not too bold */
   margin-top: 1.5rem;
@@ -46,7 +45,7 @@
 
 /* ----- Quintuple Hash Titles ----- */
 .markdown-body h5 {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 0.8rem;
   opacity: 0.7;
   font-weight: 400;
@@ -82,7 +81,8 @@
 }
 
 .markdown-body code {
-  font-family: 'Google Sans Code', monospace;
+  font-family: "Google Sans Code", monospace;
+  font-size: 0.9rem;
 }
 
 /* Inline code */
@@ -99,6 +99,27 @@
   height: auto;
   margin: 0.4rem 0 0 0;
   border-radius: 6px;
+}
+
+/* Tables */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #e2e2e2;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.markdown-body thead th {
+  background: #f6f8fa;
+  font-weight: 600;
 }
 
 .article-image {

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import ReactMarkdown from 'react-markdown';
-import './blogpost.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Navbar from "@/components/Navbar";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "./blogpost.css";
 
 function BlogPost() {
   const { name } = useParams();
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [meta, setMeta] = useState(null);
 
   useEffect(() => {
@@ -21,9 +22,8 @@ function BlogPost() {
         const mdRes = await fetch(`/blog-posts/${name}.md`);
         const mdText = await mdRes.text();
         setContent(mdText);
-
       } catch (error) {
-        console.error('Error loading article:', error);
+        console.error("Error loading article:", error);
       }
     }
 
@@ -35,52 +35,51 @@ function BlogPost() {
       <Navbar />
 
       <div className="blog-post-container">
-
         {/* Render metadata at top */}
         {meta && (
           <div className="article-header">
-
             {/* <div className="article-image">
               <img src={meta.img_url} alt={meta.title} />
             </div> */}
 
-            <div className="article-title" text-style='display'>
+            <div className="article-title" text-style="display">
               {meta.title}
             </div>
 
-            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '7px'}}>
-
-              <div className="article-author">
-                by {meta.author}
-              </div>
-              <div style={{fontWeight: '700'}}>•</div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "7px",
+              }}
+            >
+              <div className="article-author">by {meta.author}</div>
+              <div style={{ fontWeight: "700" }}>•</div>
 
               {/* <div className="article-category">
                 {meta.category}
               </div> */}
 
-              <div className="article-date">
-                {meta.date}
-              </div>
-
+              <div className="article-date">{meta.date}</div>
             </div>
 
-            <div className="article-description">
-              {meta.description}
-            </div>
-
+            <div className="article-description">{meta.description}</div>
           </div>
         )}
 
         {/* Markdown content */}
         <article className="markdown-body">
-          
           <ReactMarkdown
-          components={{
-            a: ({node, ...props}) => (
-              <a {...props} target="_blank" rel="noopener noreferrer" />
-            )
-          }}>{content}</ReactMarkdown>
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({ node, ...props }) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+            }}
+          >
+            {content}
+          </ReactMarkdown>
         </article>
       </div>
     </>

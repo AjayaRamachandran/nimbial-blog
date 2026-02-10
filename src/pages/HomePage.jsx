@@ -35,7 +35,7 @@ function HomePage() {
     <>
       <Navbar />
       <div className="title-arc">
-        <svg width="1400px" height="210" viewBox="0 0 600 80">
+        <svg width="1400px" height="250" viewBox="0 0 600 80">
           <path
             id="arcPath"
             d="M 20,40 Q 300,0 580,40" 
