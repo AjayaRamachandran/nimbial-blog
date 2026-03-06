@@ -36,20 +36,25 @@ function HomePage() {
   return (
     <>
       <Navbar />
-      <div className="title-arc">
-        <svg width="1400px" height="250" viewBox="0 0 600 80">
-          <path id="arcPath" d="M 20,40 Q 300,0 580,40" fill="transparent" />
-          <text
-            style={{ fontSize: "calc(5px + 2vw)" }}
-            fontWeight="bold"
-            fontStyle="italic"
-            textAnchor="middle"
-          >
-            <textPath href="#arcPath" startOffset="50%" fill="var(--text-color)">
-              Hey there! Welcome to our blog.
-            </textPath>
-          </text>
-        </svg>
+      <div className="homepage-banner">
+        <div className="title-arc">
+          <svg width="1400px" height="250" viewBox="0 0 600 80">
+            <path id="arcPath" d="M 20,40 Q 300,0 580,40" fill="transparent" />
+            <text
+              style={{ fontSize: "calc(7px + 2.5vw)" }}
+              fontWeight="bold"
+              fontStyle="italic"
+              textAnchor="middle"
+            >
+              <textPath href="#arcPath" startOffset="50%" fill="var(--text-color)">
+                Hey there! Welcome to our blog.
+              </textPath>
+            </text>
+          </svg>
+        </div>
+        <div className="title-not-arc">
+          <span>Hey there! Welcome to our blog.</span>
+        </div>
       </div>
 
       <div className="subtitle">

@@ -3,9 +3,21 @@
   box-sizing: border-box;
 }
 
+.homepage-banner {
+  width: 100%;
+  min-height: 500px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .title-arc {
   margin-top: 150px;
   font-weight: 900;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,9 +25,36 @@
   box-sizing: border-box;
   font-family: 'Instrument Serif', serif;
 }
+.title-not-arc {
+  display: none;
+}
+
+
+
+@media (max-width: 1000px) {
+  .title-not-arc {
+    margin-top: 50px;
+    padding: 0px 40px 50px 50px;
+    line-height: 0.99;
+    letter-spacing: -0.02em;
+    font-weight: 900;
+    font-size: calc(5vw + 36px);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+  }
+  .title-arc {
+    display: none;
+  }
+}
 
 .subtitle {
-  font-size: calc(1vw + 8px);
+  font-size: calc(1vw + 12px);
   translate: 0 -90px;
 }
 
