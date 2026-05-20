@@ -16,13 +16,13 @@ But let's say, you're all about efficiency. You don't want to say all that; you 
 
 We can imagine the information as a whole with a box, whose area represents the size of the task. The height of the box is the amount of inference that we expect from a model trying to execute the task, and the width is how much specificity we get over how it does that task.
 
-![task box analogy](https://www.dropbox.com/scl/fi/k6ioji02b5aok5rghq5z4/data-box-diagram-1.png?rlkey=at7plrey6gmxbtutt04le61dn&st=x3cw4hey&raw=1)
+![task box analogy](assets/images/data_box_diagram_1.png)
 
 If we assume the area of the box to be the informational "size" of the task, we can assume it must be roughly constant for any given task, regardless of the specificity (the width of the box). Thus, as the specificity decreases, the models "extrude" (infer) more to get to the same product. This isn't meant to prove anything mathematically, but it serves as a mental model for why inference and specificity are sort of inversely related.
 
 The way AI is trending right now, is maximizing inference to the point where specificity is nearly lost. Look at this example on OpenAI's launch page for GPT-5.
 
-![gpt-5 launch post](https://www.dropbox.com/scl/fi/4mz3baq3fdzhfcqkmzxl1/openai-gpt-5-launch.png?rlkey=e61yadvwj8ybxvbpkqcwg4s9j&st=5rmi288r&raw=1)
+![gpt-5 launch post](assets/images/openai_gpt_5_launch.png)
 ##### From OpenAI (openai.com), image from https://platform.openai.com/docs/guides/latest-model
 
 Creating an app with a single prompt sounds like an impressive pitch, until you get past the novelty and think about practical usage for a moment. Because, as an individual or as a company, if I'm using AI to help me create code, I want it to help me realize *my (company's) vision*, and it is essentially impossible to fit the intricacies of that specific vision in a single sentence. In other words, it's "make me a web app to host my brand's blog posts", and that's all fun and games, until it's "use my brand guide for the formatting" and "change the size of the paragraph text" and "actually, don't build it that way, because I want to be able to add new pages easily, so use this architecture instead", and at a certain point, you realize, this back forth is not getting anywhere, and each prompt is taking forever (because these "build it all in one prompt" models think for several times longer than the "dumber" ones), and your patience is running thin. Eventually, it becomes legitimately more efficient to just **build the app by hand** the way you wanted. Oh, and by the way, you just boiled a lake.

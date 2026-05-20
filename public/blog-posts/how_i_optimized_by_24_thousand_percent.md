@@ -67,7 +67,7 @@ At this point, it didn't matter to me *why*; the reason could have been any numb
 
 I named this migration "hot starting" — essentially keeping a Python instance **hot** and giving it instructions in real time, as opposed to spinning up a cold instance for simple commands. The diagram below explains the difference visually:
 
-![hot start diagram](https://www.dropbox.com/scl/fi/1hfakcbocaman79s6nyxz/optimization-diagram-1.png?rlkey=r97b9aphof6vold7u9zodatie&st=06wguy7h&raw=1)
+![hot start diagram](assets/images/optimization_diagram_1.png)
 
 Now, let's take a look at that chart again:
 

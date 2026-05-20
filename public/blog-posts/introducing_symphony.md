@@ -1,4 +1,4 @@
-We're excited to announce **Symphony**, a powerhouse music production platform. Symphony is designed to bridge the gap in existing music production software, bringing pro-level experimentation tools to entry-level users without the premium cost. Designed to be easy to learn, while providing ample headroom for pros, Symphony is an extremely powerful tool that you can add to your workflow today.
+I'm incredibly excited to announce the release of **Symphony**, a powerhouse music production platform. Symphony is designed to bridge the gap in existing music production software, bringing pro-level experimentation tools to entry-level users without the premium cost. Designed to be easy to learn, while providing ample headroom for pros, Symphony is an extremely powerful tool that you can add to your workflow today.
 
 [Download Symphony here](https://symphony.nimbial.com)
 

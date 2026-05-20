@@ -6,6 +6,23 @@ import remarkGfm from "remark-gfm";
 import "./blogpost.css";
 import { updateOG, resetOGToDefaults } from "@/utils/seo";
 
+function resolveMarkdownImageSrc(src) {
+  if (!src) return src;
+
+  // Keep external/data URLs untouched.
+  if (/^(https?:)?\/\//i.test(src) || src.startsWith("data:")) {
+    return src;
+  }
+
+  if (src.startsWith("/")) {
+    return src;
+  }
+
+  const normalizedSrc = src.replace(/^\.?\//, "");
+  const imagePath = normalizedSrc.replace(/^assets\/images\//, "");
+  return `/assets/images/${imagePath}`;
+}
+
 function BlogPost() {
   const { name } = useParams();
   const [content, setContent] = useState("");
@@ -89,6 +106,14 @@ function BlogPost() {
             components={{
               a: ({ node, ...props }) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
+              img: ({ node, src, alt, ...props }) => (
+                <img
+                  {...props}
+                  src={resolveMarkdownImageSrc(src)}
+                  alt={alt ?? ""}
+                  loading="lazy"
+                />
               ),
             }}
           >
