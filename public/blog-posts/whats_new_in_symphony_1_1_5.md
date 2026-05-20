@@ -10,7 +10,7 @@ You'll also see a vastly simpler installation experience — **one file, one cli
 
 ## Over 50% Less RAM Usage
 
-The same runtime jump we made also reduces the overall RAM usage of the app. By using OS-native rendering (as opposed to Electron's bundled browser), we're shaving off all the overhead; meaning no more unnecessary RAM bloat.
+The same runtime jump also reduces the overall RAM usage of the app. By using OS-native rendering (as opposed to Electron's bundled browser), we're shaving off all the overhead; meaning no more unnecessary RAM bloat.
 
 ## 3x Faster Project Manager Ops
 
@@ -22,11 +22,11 @@ By using a lightning-fast Rust launcher, there's far less delay in the visual fe
 
 ## Development: Better Dev Velocity
 
-Our underlying *backend* architecture is shifting from being cross-stack to being more python-centric; namely, the Project Manager's backend (file operation management, etc.) is shifting to a Python core, just like the Editor, which makes development faster while keeping functionality the same. This will allow us to ship features faster in the future, including a potential revamped Editor UI to support instruments/plugins — developed faster than ever thought possible before, and sacrificing none of our original goals with the app.
+The underlying *backend* architecture is shifting from being cross-stack to being more python-centric; namely, the Project Manager's backend (file operation management, etc.) is shifting to a Python core, just like the Editor, which makes development faster while keeping functionality the same. This will allow for shipping features faster in the future, including a potential revamped Editor UI to support instruments/plugins — developed faster than ever thought possible before, and sacrificing none of our original goals with the app.
 
 ---
 
-1.1.5 is not a massive user-facing update on it's own, per se, but it's genuine leap forward in how advanced, efficient, and elegant the system will be for supporting future changes. I can't wait to see what you make!
+1.1.5 is not a massive user-facing update on it's own, per se, but it's a genuine leap forward in how advanced, efficient, and elegant the system will be for supporting future changes. I can't wait to see what you make!
 
 #### ETA: June 2026
 
