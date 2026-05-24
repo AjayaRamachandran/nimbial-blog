@@ -1,6 +1,16 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
+const DEFAULT_SITE_ORIGIN = 'https://blog.nimbial.com';
+
+function escapeHtmlAttr(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function injectOrReplaceMeta(html, tags) {
   let out = html;
   const ensure = (selector, tagHtml) => {
@@ -14,17 +24,17 @@ function injectOrReplaceMeta(html, tags) {
 
   tags.forEach(({ attr, key, content }) => {
     const attrSelector = `${attr}=[\"']${key}[\"']`;
-    const tag = `<meta ${attr}="${key}" content="${content}">`;
+    const tag = `<meta ${attr}="${key}" content="${escapeHtmlAttr(content)}">`;
     ensure(attrSelector, tag);
   });
   return out;
 }
 
 function toAbsoluteImage(url, siteOrigin) {
-  if (!url) return siteOrigin + '/assets/link-preview.png';
-  if (url.startsWith('http')) return url;
-  const leading = url.startsWith('/') ? '' : '/';
-  return `${siteOrigin}${leading}${url}`;
+  if (!url) return new URL('/assets/link-preview.png', siteOrigin).href;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('//')) return `https:${url}`;
+  return new URL(url, `${siteOrigin}/`).href;
 }
 
 async function main() {
@@ -39,8 +49,13 @@ async function main() {
   const pagesJsonPath = path.join(postsDir, 'pages.json');
   const slugs = JSON.parse(await fs.readFile(pagesJsonPath, 'utf8'));
 
-  const siteOrigin = process.env.SITE_ORIGIN
-    || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
+  const siteOrigin = (
+    process.env.SITE_ORIGIN
+    || process.env.VITE_SITE_ORIGIN
+    || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined)
+    || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined)
+    || DEFAULT_SITE_ORIGIN
+  ).replace(/\/+$/, '');
 
   for (const slug of slugs) {
     const metaPath = path.join(postsDir, `${slug}.json`);

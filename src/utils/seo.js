@@ -22,6 +22,17 @@ function ensureMeta(attr, key) {
   return el;
 }
 
+function toAbsoluteUrl(url) {
+  if (!url || /^(https?:)?\/\//i.test(url) || url.startsWith("data:")) {
+    return url;
+  }
+
+  const origin = typeof window !== "undefined" ? window.location.origin : undefined;
+  if (!origin) return url;
+
+  return new URL(url, `${origin}/`).href;
+}
+
 export function updateOG({
   type = "website",
   siteName = "Nimbial - Blog",
@@ -32,13 +43,14 @@ export function updateOG({
 }) {
   const loc = typeof window !== "undefined" ? window.location.href : undefined;
   const resolvedUrl = url || loc;
+  const resolvedImage = toAbsoluteUrl(image);
 
   const ogPairs = [
     ["og:type", type],
     ["og:site_name", siteName],
     ["og:title", title],
     ["og:description", description],
-    ["og:image", image],
+    ["og:image", resolvedImage],
   ];
   if (resolvedUrl) ogPairs.push(["og:url", resolvedUrl]);
 
@@ -51,7 +63,7 @@ export function updateOG({
     ["twitter:card", "summary_large_image"],
     ["twitter:title", title],
     ["twitter:description", description],
-    ["twitter:image", image],
+    ["twitter:image", resolvedImage],
   ];
   twitterPairs.forEach(([key, val]) => {
     const el = ensureMeta("name", key);
