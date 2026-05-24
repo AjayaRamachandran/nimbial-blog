@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import { createHash } from 'crypto';
 import path from 'path';
 
 const DEFAULT_SITE_ORIGIN = 'https://blog.nimbial.com';
@@ -37,6 +38,34 @@ function toAbsoluteImage(url, siteOrigin) {
   return new URL(url, `${siteOrigin}/`).href;
 }
 
+function getImageType(url) {
+  const pathname = new URL(url, 'https://example.com').pathname;
+  if (/\.png$/i.test(pathname)) return 'image/png';
+  if (/\.(jpe?g)$/i.test(pathname)) return 'image/jpeg';
+  if (/\.gif$/i.test(pathname)) return 'image/gif';
+  if (/\.webp$/i.test(pathname)) return 'image/webp';
+  return undefined;
+}
+
+async function addLocalAssetVersion(url, publicDir) {
+  const imageUrl = new URL(url);
+  const assetPath = path.join(publicDir, decodeURIComponent(imageUrl.pathname));
+  const relativeAssetPath = path.relative(publicDir, assetPath);
+
+  if (relativeAssetPath.startsWith('..') || path.isAbsolute(relativeAssetPath)) {
+    return url;
+  }
+
+  try {
+    const buffer = await fs.readFile(assetPath);
+    const hash = createHash('sha256').update(buffer).digest('hex').slice(0, 10);
+    imageUrl.searchParams.set('v', hash);
+    return imageUrl.href;
+  } catch {
+    return url;
+  }
+}
+
 async function main() {
   const repoRoot = process.cwd();
   const distDir = path.join(repoRoot, 'dist');
@@ -63,7 +92,11 @@ async function main() {
 
     const title = meta.title || 'Read it on the Nimbial Blog';
     const description = 'Read it on the Nimbial Blog';
-    const imageAbs = toAbsoluteImage(meta.img_url, siteOrigin);
+    const imageAbs = await addLocalAssetVersion(
+      toAbsoluteImage(meta.img_url, siteOrigin),
+      publicDir,
+    );
+    const imageType = getImageType(imageAbs);
     const pageUrl = siteOrigin ? `${siteOrigin}/pages/${slug}` : undefined;
 
     let html = baseHtml;
@@ -74,7 +107,10 @@ async function main() {
       { attr: 'property', key: 'og:title', content: title },
       { attr: 'property', key: 'og:description', content: description },
       { attr: 'property', key: 'og:image', content: imageAbs },
+      { attr: 'property', key: 'og:image:url', content: imageAbs },
+      { attr: 'property', key: 'og:image:secure_url', content: imageAbs },
     ];
+    if (imageType) tags.push({ attr: 'property', key: 'og:image:type', content: imageType });
     if (pageUrl) tags.push({ attr: 'property', key: 'og:url', content: pageUrl });
 
     tags.push(

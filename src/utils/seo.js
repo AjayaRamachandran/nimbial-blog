@@ -33,6 +33,24 @@ function toAbsoluteUrl(url) {
   return new URL(url, `${origin}/`).href;
 }
 
+function getImageType(url) {
+  if (!url) return undefined;
+
+  const pathname = (() => {
+    try {
+      return new URL(url, "https://example.com").pathname;
+    } catch {
+      return url;
+    }
+  })();
+
+  if (/\.png$/i.test(pathname)) return "image/png";
+  if (/\.(jpe?g)$/i.test(pathname)) return "image/jpeg";
+  if (/\.gif$/i.test(pathname)) return "image/gif";
+  if (/\.webp$/i.test(pathname)) return "image/webp";
+  return undefined;
+}
+
 export function updateOG({
   type = "website",
   siteName = "Nimbial - Blog",
@@ -44,6 +62,7 @@ export function updateOG({
   const loc = typeof window !== "undefined" ? window.location.href : undefined;
   const resolvedUrl = url || loc;
   const resolvedImage = toAbsoluteUrl(image);
+  const imageType = getImageType(resolvedImage);
 
   const ogPairs = [
     ["og:type", type],
@@ -51,7 +70,10 @@ export function updateOG({
     ["og:title", title],
     ["og:description", description],
     ["og:image", resolvedImage],
+    ["og:image:url", resolvedImage],
+    ["og:image:secure_url", resolvedImage],
   ];
+  if (imageType) ogPairs.push(["og:image:type", imageType]);
   if (resolvedUrl) ogPairs.push(["og:url", resolvedUrl]);
 
   ogPairs.forEach(([key, val]) => {
