@@ -95,6 +95,13 @@
   border-radius: 5px;
 }
 
+/* Math blocks */
+.markdown-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
 /* Images */
 .markdown-body img {
   max-width: 100%;
@@ -123,6 +130,51 @@
 .markdown-body thead th {
   background: var(--tinted-bg-color);
   font-weight: 600;
+}
+
+.llm-stats-chart {
+  background: var(--tinted-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin: 1.6rem 0;
+  padding: 1rem 1rem 0.75rem;
+}
+
+.llm-stats-chart figcaption {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.llm-stats-chart-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.llm-stats-chart-controls button {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--text-color);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.7rem;
+}
+
+.llm-stats-chart-controls button.active {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+.llm-stats-chart-tooltip {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  padding: 0.65rem 0.8rem;
 }
 
 .article-image {
