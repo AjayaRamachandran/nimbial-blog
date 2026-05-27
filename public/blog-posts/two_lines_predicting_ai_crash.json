@@ -4,5 +4,8 @@
     "author" : "Ajaya Ramachandran",
     "category" : "OPINION",
     "date" : "5/27/2026",
-    "description" : "2026 is a pivotal year that will flip the AI world on its head — and I predicted it 6 months ago with one graph."
+    "description" : "2026 is a pivotal year that will flip the AI world on its head — and I predicted it 6 months ago with one graph.",
+    "og_image_width" : "400",
+    "og_image_height" : "295",
+    "twitter_card" : "summary"
 }

@@ -63,6 +63,9 @@ function BlogPost() {
           title: metaData.title,
           description: "Read it on the Nimbial Blog",
           image: metaData.img_url,
+          imageWidth: metaData.og_image_width,
+          imageHeight: metaData.og_image_height,
+          twitterCard: metaData.twitter_card,
         });
 
         // Load the markdown file

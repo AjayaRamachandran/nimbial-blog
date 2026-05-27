@@ -57,6 +57,9 @@ export function updateOG({
   title = "Read it on the Nimbial Blog",
   description = "Read it on the Nimbial Blog",
   image = "/assets/link-preview.png",
+  imageWidth = "695",
+  imageHeight = "512",
+  twitterCard = "summary_large_image",
   url,
 }) {
   const loc = typeof window !== "undefined" ? window.location.href : undefined;
@@ -74,6 +77,8 @@ export function updateOG({
     ["og:image:secure_url", resolvedImage],
   ];
   if (imageType) ogPairs.push(["og:image:type", imageType]);
+  if (imageWidth) ogPairs.push(["og:image:width", imageWidth]);
+  if (imageHeight) ogPairs.push(["og:image:height", imageHeight]);
   if (resolvedUrl) ogPairs.push(["og:url", resolvedUrl]);
 
   ogPairs.forEach(([key, val]) => {
@@ -82,7 +87,7 @@ export function updateOG({
   });
 
   const twitterPairs = [
-    ["twitter:card", "summary_large_image"],
+    ["twitter:card", twitterCard],
     ["twitter:title", title],
     ["twitter:description", description],
     ["twitter:image", resolvedImage],

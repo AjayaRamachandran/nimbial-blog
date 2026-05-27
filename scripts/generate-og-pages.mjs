@@ -97,6 +97,9 @@ async function main() {
       publicDir,
     );
     const imageType = getImageType(imageAbs);
+    const imageWidth = meta.og_image_width || '695';
+    const imageHeight = meta.og_image_height || '512';
+    const twitterCard = meta.twitter_card || 'summary_large_image';
     const pageUrl = siteOrigin ? `${siteOrigin}/pages/${slug}` : undefined;
 
     let html = baseHtml;
@@ -111,10 +114,12 @@ async function main() {
       { attr: 'property', key: 'og:image:secure_url', content: imageAbs },
     ];
     if (imageType) tags.push({ attr: 'property', key: 'og:image:type', content: imageType });
+    if (imageWidth) tags.push({ attr: 'property', key: 'og:image:width', content: imageWidth });
+    if (imageHeight) tags.push({ attr: 'property', key: 'og:image:height', content: imageHeight });
     if (pageUrl) tags.push({ attr: 'property', key: 'og:url', content: pageUrl });
 
     tags.push(
-      { attr: 'name', key: 'twitter:card', content: 'summary_large_image' },
+      { attr: 'name', key: 'twitter:card', content: twitterCard },
       { attr: 'name', key: 'twitter:title', content: title },
       { attr: 'name', key: 'twitter:description', content: description },
       { attr: 'name', key: 'twitter:image', content: imageAbs },
