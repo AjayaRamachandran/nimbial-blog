@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import ChartFigure from "@/components/ChartFigure";
 
 export const modelData = [
   {
@@ -235,9 +236,31 @@ function ParamMeanPoint({ cx, cy }) {
   );
 }
 
+const chartTables = [
+  {
+    caption: "Open models shown in the chart",
+    columns: ["Model", "Released", "Parameters", "Leaderboard score"],
+    rows: modelData.map((point) => [
+      point.model,
+      point.releasedMonth,
+      `${point.paramsB}B`,
+      point.score,
+    ]),
+  },
+  {
+    caption: "50-score Param Mean: estimated parameters needed to score 50, by month",
+    columns: ["Month", "Estimated parameters", "Models that month"],
+    rows: paramMeanData.map((point) => [
+      point.releasedMonth,
+      `${point.paramMeanB}B`,
+      point.modelCount,
+    ]),
+  },
+];
+
 function LLMStatsOpenModelsGraph() {
   return (
-    <figure className="llm-stats-chart">
+    <ChartFigure tables={chartTables}>
       <ResponsiveContainer width="100%" height={360}>
         <ScatterChart margin={{ top: 20, right: 24, bottom: 24, left: 8 }}>
           <CartesianGrid strokeDasharray="3 3" opacity={0.35} />
@@ -289,7 +312,7 @@ function LLMStatsOpenModelsGraph() {
         of 50; the line estimates the parameter count needed for score 50 in each
         month.
       </figcaption>
-    </figure>
+    </ChartFigure>
   );
 }
 

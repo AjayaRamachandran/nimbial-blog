@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="author" content="Nimbial">
+    <meta name="description" content="A monstrous overhaul of Symphony that will allow for tons of new features.">
+    <meta property="article:published_time" content="2026-11-11">
+    <meta property="og:url" content="https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_6">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's new in Symphony 1.1.6 · Nimbial Blog</title>
+    <link rel="icon" type="image/svg" href="/assets/favicon.svg" />
+
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t && localStorage.getItem("darkMode") === "on") t = "dark";
+          dark = t === "dark" ||
+            (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (e) {}
+        if (dark) document.documentElement.classList.add("dark-mode");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+
+    <!-- Open Graph Meta Tags (defaults for homepage) -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Nimbial - Blog">
+    <meta property="og:title" content="What's new in Symphony 1.1.6">
+    <meta property="og:description" content="A monstrous overhaul of Symphony that will allow for tons of new features.">
+    <meta property="og:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_6_teaser.png?v=32b8504ebf">
+    <meta property="og:image:url" content="https://blog.nimbial.com/assets/images/symphony_1_1_6_teaser.png?v=32b8504ebf">
+    <meta property="og:image:secure_url" content="https://blog.nimbial.com/assets/images/symphony_1_1_6_teaser.png?v=32b8504ebf">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="695">
+    <meta property="og:image:height" content="512">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What's new in Symphony 1.1.6">
+    <meta name="twitter:description" content="A monstrous overhaul of Symphony that will allow for tons of new features.">
+    <meta name="twitter:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_6_teaser.png?v=32b8504ebf">
+    <script type="module" crossorigin src="/assets/index-CueS7eM5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CB_Js4su.css">
+      <link rel="canonical" href="https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_6">
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What's new in Symphony 1.1.6","description":"A monstrous overhaul of Symphony that will allow for tons of new features.","image":"https://blog.nimbial.com/assets/images/symphony_1_1_6_teaser.png?v=32b8504ebf","url":"https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_6","mainEntityOfPage":"https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_6","datePublished":"2026-11-11","author":{"@type":"Person","name":"Nimbial"},"publisher":{"@type":"Organization","name":"Nimbial"}}</script>
+  </head>
+  <body class="scrollable">
+    <div id="root"><link rel="preload" as="image" href="/assets/favicon.svg"/><link rel="preload" as="image" href="/assets/nimbial-logo.svg"/><div class="navbar"><a class="title" href="/">blog.<span class="title-domain">nimbial.com</span></a><div class="navbar-right"><button type="button" class="theme-switch" aria-label="Appearance: Match my device. Click to change." title="Appearance: Match my device"><span class="theme-dot" style="--pos:0" aria-hidden="true"></span><span class="theme-dot" style="--pos:1" aria-hidden="true"></span><span class="theme-dot" style="--pos:2" aria-hidden="true"></span><span class="theme-thumb" style="--pos:1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></span></button><a href="https://www.nimbial.com"><img src="/assets/favicon.svg" width="25" style="border-radius:7px;outline:1.5px solid var(--text-color);outline-offset:-1px;margin-top:3px"/></a></div></div><div class="blog-post-container"><div class="article-header"><div class="article-title" text-style="display">What&#x27;s new in Symphony 1.1.6</div><div style="display:flex;flex-direction:row;align-items:center;gap:7px"><div class="article-author">by Nimbial</div><div style="font-weight:700">•</div><div class="article-date">11/11/2026</div></div><div class="article-description">A monstrous overhaul of Symphony that will allow for tons of new features.</div></div><article class="markdown-body"><p><em>I&#x27;m thrilled to announce another mid-cycle update that has finally opened the floodgates for a more powerful Symphony. Consider this a TLC update that improves QoL across the board, and sets the platform up for new features to be finally added!</em></p>
+<h2>Improved User Experience</h2>
+<p>We&#x27;ve made some significant improvements to the UX of Symphony, enabled by the new UI Engine (explained below) as well as features that were overdue. These include:</p>
+<ul>
+<li>Smooth scrolling in the grid</li>
+<li>Contrast improvements to enhance UI legibility</li>
+<li>Better status indication of what tool you&#x27;re using at any given time</li>
+<li>Resize handles + mouse resize-indication on the edges of selected notes (finally)</li>
+<li>Adaptive window resizing
+Individually, they seem small, but altogether they help the creation of music in Symphony feel much more polished and modern, and the app more stable and reliable.</li>
+</ul>
+<h2>UI Engine Overhaul</h2>
+<p>Over a methodical rewrite of the entire UI engine, we&#x27;ve constructed an entirely new, far more advanced UI engine that still exists on top of the real-time graphics library we&#x27;ve always used -- but this time, it&#x27;s the most sophisticated and performant it&#x27;s ever been, utilizing advanced optimizations and a layered, hierarchical structure to implement a basic Document-Object Model (DOM) / Flexbox engine. This allows us to make elements have styling, alignment, connected via data dependency, watch for changes to defer updates, etc. In the upcoming 1.2 update, we&#x27;ll need every tool in our arsenal to add panels, modals, collapsed/expanded view, and much more, and the previous UI engine was just not sophisticated enough to do the job. Now that the framework has been rewritten, we wanted to essentially re-release the feature-complete alternative to 1.1.5, plus all the other small tweaks, so you&#x27;d have access to this new UI as soon as possible!</p>
+<h2>Improved Audio Normalization</h2>
+<p>We received feedback from users that various instruments had wildly different <em>perceived loudness</em> -- we upgraded the audio normalization to fix this, so you can layer the provided instruments without certain ones dominating the layering.</p>
+<h2>Critical Bug Fixes (3)</h2>
+<blockquote>
+<p>⚠️ We found that when exporting certain Symphony projects to musicxml, we encountered a recurring bug pertaining to stacked notes and their corresponding chords, which led to irregular measure lengths; we&#x27;ve fixed this system in the new musicxml-exporting logic.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ We also found that when loading projects made in a newer or incompatible version of Symphony, our reader would immediately begin reading/editing the contents before performing some preliminary checks; in 1.1.6 (and beyond), loading incompatible or newer files will flag your attention, urge you to upgrade, and NOT edit the original files&#x27; contents.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ Lastly, we found many bugs regarding the state of dropdowns in the app; scrolling content beneath them would cause them to be cut off or hidden, dropdowns with related state had data confounding issues, and responsiveness was poor (in all interactive elements, but especially dropdowns). These have been fixed.</p>
+</blockquote>
+<hr/>
+<p>Overall, as you may have inferred, these features aren&#x27;t as flashy as what&#x27;s to come; but in order to design the complexities of custom instruments, effects, layering, and so on, several critical architectural overhauls had to be made -- that&#x27;s what 1.1.6 is for. We hope you enjoy the improvements it brings, and that you&#x27;re excited for what&#x27;s next!</p></article></div><footer class="footer"><div class="footer-column"><img src="/assets/nimbial-logo.svg" width="30" alt=""/><a class="footer-link" href="https://www.nimbial.com">nimbial.com</a><div>© 2026 Made by Nimbial</div></div><div class="footer-column"><div>Symphony</div><a class="footer-link" href="https://symphony.nimbial.com/">Home</a><a class="footer-link" href="https://symphony.nimbial.com/download">Download</a><a class="footer-link" href="https://symphony.nimbial.com/support">Donate</a></div><div class="footer-column"><div>Resources</div><a class="footer-link" href="/docs">Nimbial Docs</a><a class="footer-link" href="/blog">Blog</a></div><div class="footer-column"><div>Brand</div><a class="footer-link" href="/about">About</a><a class="footer-link" href="/contact">Contact</a><a class="footer-link" href="https://symphony.nimbial.com/ai">Nimbial &amp; AI</a></div><div class="footer-column"><div>Legal</div><a class="footer-link" href="https://symphony.nimbial.com/terms-and-conditions">Terms</a><a class="footer-link" href="https://symphony.nimbial.com/privacy-policy">Privacy</a></div></footer></div>
+    <script type="application/json" id="prerendered-post">{"slug":"whats_new_in_symphony_1_1_6","meta":{"img_url":"/assets/images/symphony_1_1_6_teaser.png","title":"What's new in Symphony 1.1.6","author":"Nimbial","category":"PRODUCT","date":"11/11/2026","description":"A monstrous overhaul of Symphony that will allow for tons of new features."},"markdown":"*I'm thrilled to announce another mid-cycle update that has finally opened the floodgates for a more powerful Symphony. Consider this a TLC update that improves QoL across the board, and sets the platform up for new features to be finally added!*\r\n\r\n## Improved User Experience\r\nWe've made some significant improvements to the UX of Symphony, enabled by the new UI Engine (explained below) as well as features that were overdue. These include:\r\n- Smooth scrolling in the grid\r\n- Contrast improvements to enhance UI legibility\r\n- Better status indication of what tool you're using at any given time\r\n- Resize handles + mouse resize-indication on the edges of selected notes (finally)\r\n- Adaptive window resizing\r\nIndividually, they seem small, but altogether they help the creation of music in Symphony feel much more polished and modern, and the app more stable and reliable. \r\n\r\n## UI Engine Overhaul\r\nOver a methodical rewrite of the entire UI engine, we've constructed an entirely new, far more advanced UI engine that still exists on top of the real-time graphics library we've always used -- but this time, it's the most sophisticated and performant it's ever been, utilizing advanced optimizations and a layered, hierarchical structure to implement a basic Document-Object Model (DOM) / Flexbox engine. This allows us to make elements have styling, alignment, connected via data dependency, watch for changes to defer updates, etc. In the upcoming 1.2 update, we'll need every tool in our arsenal to add panels, modals, collapsed/expanded view, and much more, and the previous UI engine was just not sophisticated enough to do the job. Now that the framework has been rewritten, we wanted to essentially re-release the feature-complete alternative to 1.1.5, plus all the other small tweaks, so you'd have access to this new UI as soon as possible!\r\n\r\n## Improved Audio Normalization\r\nWe received feedback from users that various instruments had wildly different *perceived loudness* -- we upgraded the audio normalization to fix this, so you can layer the provided instruments without certain ones dominating the layering.\r\n\r\n## Critical Bug Fixes (3)\r\n> ⚠️ We found that when exporting certain Symphony projects to musicxml, we encountered a recurring bug pertaining to stacked notes and their corresponding chords, which led to irregular measure lengths; we've fixed this system in the new musicxml-exporting logic.\r\n\r\n> ⚠️ We also found that when loading projects made in a newer or incompatible version of Symphony, our reader would immediately begin reading/editing the contents before performing some preliminary checks; in 1.1.6 (and beyond), loading incompatible or newer files will flag your attention, urge you to upgrade, and NOT edit the original files' contents.\r\n\r\n> ⚠️ Lastly, we found many bugs regarding the state of dropdowns in the app; scrolling content beneath them would cause them to be cut off or hidden, dropdowns with related state had data confounding issues, and responsiveness was poor (in all interactive elements, but especially dropdowns). These have been fixed.\r\n\r\n---\r\n\r\nOverall, as you may have inferred, these features aren't as flashy as what's to come; but in order to design the complexities of custom instruments, effects, layering, and so on, several critical architectural overhauls had to be made -- that's what 1.1.6 is for. We hope you enjoy the improvements it brings, and that you're excited for what's next!"}</script>
+  </body>
+</html>

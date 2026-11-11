@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import ChartFigure from "@/components/ChartFigure";
 
 export const BYTES_PER_PARAM_Q4 = 0.5;
 export const RUNTIME_OVERHEAD_MULTIPLIER = 1.2;
@@ -70,9 +71,33 @@ function ChartTooltip({ active, payload, label }) {
   );
 }
 
+const chartTables = [
+  {
+    caption: "Estimated model capacity by iPhone RAM",
+    columns: [
+      "Year",
+      "Base iPhone",
+      "Base RAM",
+      "Base estimated capacity",
+      "Highest-RAM iPhone",
+      "Highest RAM",
+      "Highest-RAM estimated capacity",
+    ],
+    rows: iphoneRamData.map((point) => [
+      point.year,
+      point.baseModel,
+      `${point.baseRamGB}GB`,
+      `${point.baseParamsB}B`,
+      point.highEndModel,
+      `${point.highEndRamGB}GB`,
+      `${point.highEndParamsB}B`,
+    ]),
+  },
+];
+
 function IPhoneParamCapacityGraph() {
   return (
-    <figure className="llm-stats-chart">
+    <ChartFigure tables={chartTables}>
       <ResponsiveContainer width="100%" height={360}>
         <LineChart data={iphoneRamData} margin={{ top: 20, right: 24, bottom: 24, left: 8 }}>
           <CartesianGrid strokeDasharray="3 3" opacity={0.35} />
@@ -125,7 +150,7 @@ function IPhoneParamCapacityGraph() {
         </a>
         .
       </figcaption>
-    </figure>
+    </ChartFigure>
   );
 }
 

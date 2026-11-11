@@ -1,0 +1,15 @@
+# Nimbial Blog
+
+> Articles from Nimbial about Symphony, AI, and software. Each link below is the full article as a web page.
+
+Home: https://blog.nimbial.com/
+
+## Articles
+
+- [What's new in Symphony 1.1.6](https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_6): 2026-11-11 — A monstrous overhaul of Symphony that will allow for tons of new features.
+- [These two lines predict the AI crash](https://blog.nimbial.com/pages/two_lines_predicting_ai_crash): 2026-05-27 — 2026 is a pivotal year that will flip the AI world on its head — and I predicted it 6 months ago with one graph.
+- [What's new in Symphony 1.1.5](https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_5): 2026-05-20 — How we're shaping Symphony to be better for longer.
+- [How I optimized my code by 24,000%](https://blog.nimbial.com/pages/how_i_optimized_by_24_thousand_percent): 2026-03-06 — I rewrote my app to turn a TWO-MINUTE load time into half a second; here's what I learned from that experience.
+- [What's coming in Symphony 1.1](https://blog.nimbial.com/pages/whats_coming_in_symphony_1_1): 2025-12-08 — All the features coming in the next version of Symphony.
+- [The Data Box](https://blog.nimbial.com/pages/the_data_box): 2025-12-07 — AI is plateauing, and the problem could be more unsolvable than you think.
+- [Introducing Symphony!](https://blog.nimbial.com/pages/introducing_symphony): 2025-09-16 — The first member of the Nimbial family enters the scene.

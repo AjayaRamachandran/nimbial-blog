@@ -1,31 +1,63 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name="author" content="Nimbial">
+    <meta name="description" content="All the features coming in the next version of Symphony.">
+    <meta property="article:published_time" content="2025-12-08">
     <meta property="og:url" content="https://blog.nimbial.com/pages/whats_coming_in_symphony_1_1">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What's coming in Symphony 1.1 · Nimbial Blog</title>
     <link rel="icon" type="image/svg" href="/assets/favicon.svg" />
 
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t && localStorage.getItem("darkMode") === "on") t = "dark";
+          dark = t === "dark" ||
+            (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (e) {}
+        if (dark) document.documentElement.classList.add("dark-mode");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+
     <!-- Open Graph Meta Tags (defaults for homepage) -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Nimbial - Blog">
     <meta property="og:title" content="What's coming in Symphony 1.1">
-    <meta property="og:description" content="Read it on the Nimbial Blog">
+    <meta property="og:description" content="All the features coming in the next version of Symphony.">
     <meta property="og:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_teaser.png?v=88367221aa">
     <meta property="og:image:url" content="https://blog.nimbial.com/assets/images/symphony_1_1_teaser.png?v=88367221aa">
     <meta property="og:image:secure_url" content="https://blog.nimbial.com/assets/images/symphony_1_1_teaser.png?v=88367221aa">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="695" />
-    <meta property="og:image:height" content="512" />
+    <meta property="og:image:width" content="695">
+    <meta property="og:image:height" content="512">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What's coming in Symphony 1.1">
-    <meta name="twitter:description" content="Read it on the Nimbial Blog">
+    <meta name="twitter:description" content="All the features coming in the next version of Symphony.">
     <meta name="twitter:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_teaser.png?v=88367221aa">
-    <script type="module" crossorigin src="/assets/index-PIcVY58B.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ByctFou8.css">
+    <script type="module" crossorigin src="/assets/index-CueS7eM5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CB_Js4su.css">
+      <link rel="canonical" href="https://blog.nimbial.com/pages/whats_coming_in_symphony_1_1">
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What's coming in Symphony 1.1","description":"All the features coming in the next version of Symphony.","image":"https://blog.nimbial.com/assets/images/symphony_1_1_teaser.png?v=88367221aa","url":"https://blog.nimbial.com/pages/whats_coming_in_symphony_1_1","mainEntityOfPage":"https://blog.nimbial.com/pages/whats_coming_in_symphony_1_1","datePublished":"2025-12-08","author":{"@type":"Person","name":"Nimbial"},"publisher":{"@type":"Organization","name":"Nimbial"}}</script>
   </head>
   <body class="scrollable">
-    <div id="root"></div>
+    <div id="root"><link rel="preload" as="image" href="/assets/favicon.svg"/><link rel="preload" as="image" href="/assets/nimbial-logo.svg"/><div class="navbar"><a class="title" href="/">blog.<span class="title-domain">nimbial.com</span></a><div class="navbar-right"><button type="button" class="theme-switch" aria-label="Appearance: Match my device. Click to change." title="Appearance: Match my device"><span class="theme-dot" style="--pos:0" aria-hidden="true"></span><span class="theme-dot" style="--pos:1" aria-hidden="true"></span><span class="theme-dot" style="--pos:2" aria-hidden="true"></span><span class="theme-thumb" style="--pos:1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></span></button><a href="https://www.nimbial.com"><img src="/assets/favicon.svg" width="25" style="border-radius:7px;outline:1.5px solid var(--text-color);outline-offset:-1px;margin-top:3px"/></a></div></div><div class="blog-post-container"><div class="article-header"><div class="article-title" text-style="display">What&#x27;s coming in Symphony 1.1</div><div style="display:flex;flex-direction:row;align-items:center;gap:7px"><div class="article-author">by Nimbial</div><div style="font-weight:700">•</div><div class="article-date">12/8/2025</div></div><div class="article-description">All the features coming in the next version of Symphony.</div></div><article class="markdown-body"><p><em>The next version of Symphony is coming soon, here&#x27;s everything that&#x27;s arriving your way.</em></p>
+<h2>Performance: Faster Load Times</h2>
+<p>By changing the underlying architecture for how we load the Symphony editor, we&#x27;re expecting project load times to shrink vastly from as long as <em>2 minutes</em> on some older computers down to less than half a second. The key tech upgrade we&#x27;re utilizing here is migrating from a <strong>cold-start</strong> architecture (where the editor program runtime has to spin up from zero every time you open a project) to a <strong>hot-start</strong> architecture, where the editor silently spins up with the project manager in the background, and loads just the editor GUI when you open a project. Because the runtime is already active, these hot-start times are next to nothing, and we hope this will make jumping into your active workspaces more seamless than ever.</p>
+<h2>Performance: Optimized Rendering</h2>
+<p>To allow for advanced realtime graphics, we built Symphony&#x27;s UI from the ground up in a python-based game library. However, this means we&#x27;re trading high CPU usage for the benefits of the realtime loop. But with 1.1, we&#x27;re tightly optimizing the render loop to utilize deferred rendering, screen-space culling, and bounding-box optimization. This not only means that you&#x27;ll see a real boost in FPS and a drop in CPU usage, but this sets Symphony up for far more advanced graphics down the line, such as allowing support for visual plugin support.</p>
+<h2>Visual: Slate Design Language</h2>
+<p>With the Project Manager of Symphony 1.0, we established the Slate design language as a UI standard for legibility, accessbility, and brand unity. With 1.1, we&#x27;re extending this to the editor, unifying both with a consistent identity, while making the editor feel fresh and modern.</p>
+<h2>Under the hood: Changing how Symphony data is stored</h2>
+<p>We&#x27;re doing a complete redesign of how notes and note data are stored under the hood. While visually, this means not much will change, changing the architecture in this way means that entire notes can now store metadata fields, which sets Symphony up nicely to support plugins in the <em>next</em> version.</p>
+<hr/>
+<p>We think these updates are exciting and will make Symphony even more clear of a choice for musical experimenters. We can&#x27;t wait to see what you make with it soon!</p>
+<h4>ETA: Spring 2026</h4></article></div><footer class="footer"><div class="footer-column"><img src="/assets/nimbial-logo.svg" width="30" alt=""/><a class="footer-link" href="https://www.nimbial.com">nimbial.com</a><div>© 2026 Made by Nimbial</div></div><div class="footer-column"><div>Symphony</div><a class="footer-link" href="https://symphony.nimbial.com/">Home</a><a class="footer-link" href="https://symphony.nimbial.com/download">Download</a><a class="footer-link" href="https://symphony.nimbial.com/support">Donate</a></div><div class="footer-column"><div>Resources</div><a class="footer-link" href="/docs">Nimbial Docs</a><a class="footer-link" href="/blog">Blog</a></div><div class="footer-column"><div>Brand</div><a class="footer-link" href="/about">About</a><a class="footer-link" href="/contact">Contact</a><a class="footer-link" href="https://symphony.nimbial.com/ai">Nimbial &amp; AI</a></div><div class="footer-column"><div>Legal</div><a class="footer-link" href="https://symphony.nimbial.com/terms-and-conditions">Terms</a><a class="footer-link" href="https://symphony.nimbial.com/privacy-policy">Privacy</a></div></footer></div>
+    <script type="application/json" id="prerendered-post">{"slug":"whats_coming_in_symphony_1_1","meta":{"img_url":"/assets/images/symphony_1_1_teaser.png","title":"What's coming in Symphony 1.1","author":"Nimbial","category":"PRODUCT","date":"12/8/2025","description":"All the features coming in the next version of Symphony."},"markdown":"*The next version of Symphony is coming soon, here's everything that's arriving your way.*\r\n\r\n## Performance: Faster Load Times\r\nBy changing the underlying architecture for how we load the Symphony editor, we're expecting project load times to shrink vastly from as long as *2 minutes* on some older computers down to less than half a second. The key tech upgrade we're utilizing here is migrating from a **cold-start** architecture (where the editor program runtime has to spin up from zero every time you open a project) to a **hot-start** architecture, where the editor silently spins up with the project manager in the background, and loads just the editor GUI when you open a project. Because the runtime is already active, these hot-start times are next to nothing, and we hope this will make jumping into your active workspaces more seamless than ever.\r\n\r\n## Performance: Optimized Rendering\r\nTo allow for advanced realtime graphics, we built Symphony's UI from the ground up in a python-based game library. However, this means we're trading high CPU usage for the benefits of the realtime loop. But with 1.1, we're tightly optimizing the render loop to utilize deferred rendering, screen-space culling, and bounding-box optimization. This not only means that you'll see a real boost in FPS and a drop in CPU usage, but this sets Symphony up for far more advanced graphics down the line, such as allowing support for visual plugin support.\r\n\r\n## Visual: Slate Design Language\r\nWith the Project Manager of Symphony 1.0, we established the Slate design language as a UI standard for legibility, accessbility, and brand unity. With 1.1, we're extending this to the editor, unifying both with a consistent identity, while making the editor feel fresh and modern.\r\n\r\n## Under the hood: Changing how Symphony data is stored\r\nWe're doing a complete redesign of how notes and note data are stored under the hood. While visually, this means not much will change, changing the architecture in this way means that entire notes can now store metadata fields, which sets Symphony up nicely to support plugins in the *next* version.\r\n\r\n---\r\n\r\nWe think these updates are exciting and will make Symphony even more clear of a choice for musical experimenters. We can't wait to see what you make with it soon!\r\n\r\n#### ETA: Spring 2026"}</script>
   </body>
 </html>

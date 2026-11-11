@@ -6,6 +6,21 @@
     <title>Nimbial Blog</title>
     <link rel="icon" type="image/svg" href="/assets/favicon.svg" />
 
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t && localStorage.getItem("darkMode") === "on") t = "dark";
+          dark = t === "dark" ||
+            (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (e) {}
+        if (dark) document.documentElement.classList.add("dark-mode");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+
     <!-- Open Graph Meta Tags (defaults for homepage) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nimbial - Blog" />

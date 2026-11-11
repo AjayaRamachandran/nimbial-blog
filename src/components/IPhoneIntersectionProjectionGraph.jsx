@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { paramMeanData } from "@/components/LLMStatsOpenModelsGraph";
 import { iphoneRamData } from "@/components/IPhoneParamCapacityGraph";
+import ChartFigure from "@/components/ChartFigure";
 
 const BASE_DATE = new Date("2025-09-01T00:00:00Z");
 
@@ -80,6 +81,21 @@ const projectionData = Array.from({ length: 19 }, (_, monthIndex) => ({
   iphoneParamsB: Number(highEndIPhoneRegression.valueAt(monthIndex).toFixed(1)),
 }));
 
+const chartSummary = `The fitted lines cross around ${formatProjectionMonth(
+  intersectionX,
+)}, at about ${intersectionY.toFixed(1)}B parameters.`;
+const chartTables = [
+  {
+    caption: "Projected model size needed to score 50 vs. highest-RAM iPhone capacity",
+    columns: ["Month", "Score-50 model size fit", "Highest-RAM iPhone fit"],
+    rows: projectionData.map((point) => [
+      point.monthLabel,
+      `${point.requiredParamsB}B`,
+      `${point.iphoneParamsB}B`,
+    ]),
+  },
+];
+
 function ChartTooltip({ active, payload, label }) {
   if (!active || !payload?.length) {
     return null;
@@ -112,7 +128,7 @@ function IPhoneIntersectionProjectionGraph() {
       };
 
   return (
-    <figure className="llm-stats-chart">
+    <ChartFigure summary={chartSummary} tables={chartTables}>
       <div className="llm-stats-chart-controls" aria-label="Y-axis scale">
         <button
           aria-pressed={!isLogScale}
@@ -197,7 +213,7 @@ function IPhoneIntersectionProjectionGraph() {
         {formatProjectionMonth(intersectionX)}, at about {intersectionY.toFixed(1)}
         B Q4 parameters.
       </figcaption> */}
-    </figure>
+    </ChartFigure>
   );
 }
 

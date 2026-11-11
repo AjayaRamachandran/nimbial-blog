@@ -1,31 +1,67 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name="author" content="Nimbial">
+    <meta name="description" content="How we're shaping Symphony to be better for longer.">
+    <meta property="article:published_time" content="2026-05-20">
     <meta property="og:url" content="https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_5">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What's new in Symphony 1.1.5 · Nimbial Blog</title>
     <link rel="icon" type="image/svg" href="/assets/favicon.svg" />
 
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t && localStorage.getItem("darkMode") === "on") t = "dark";
+          dark = t === "dark" ||
+            (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (e) {}
+        if (dark) document.documentElement.classList.add("dark-mode");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+
     <!-- Open Graph Meta Tags (defaults for homepage) -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Nimbial - Blog">
     <meta property="og:title" content="What's new in Symphony 1.1.5">
-    <meta property="og:description" content="Read it on the Nimbial Blog">
+    <meta property="og:description" content="How we're shaping Symphony to be better for longer.">
     <meta property="og:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_5_teaser.png?v=a0dbca3ced">
     <meta property="og:image:url" content="https://blog.nimbial.com/assets/images/symphony_1_1_5_teaser.png?v=a0dbca3ced">
     <meta property="og:image:secure_url" content="https://blog.nimbial.com/assets/images/symphony_1_1_5_teaser.png?v=a0dbca3ced">
     <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="695" />
-    <meta property="og:image:height" content="512" />
+    <meta property="og:image:width" content="695">
+    <meta property="og:image:height" content="512">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="What's new in Symphony 1.1.5">
-    <meta name="twitter:description" content="Read it on the Nimbial Blog">
+    <meta name="twitter:description" content="How we're shaping Symphony to be better for longer.">
     <meta name="twitter:image" content="https://blog.nimbial.com/assets/images/symphony_1_1_5_teaser.png?v=a0dbca3ced">
-    <script type="module" crossorigin src="/assets/index-PIcVY58B.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ByctFou8.css">
+    <script type="module" crossorigin src="/assets/index-CueS7eM5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CB_Js4su.css">
+      <link rel="canonical" href="https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_5">
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What's new in Symphony 1.1.5","description":"How we're shaping Symphony to be better for longer.","image":"https://blog.nimbial.com/assets/images/symphony_1_1_5_teaser.png?v=a0dbca3ced","url":"https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_5","mainEntityOfPage":"https://blog.nimbial.com/pages/whats_new_in_symphony_1_1_5","datePublished":"2026-05-20","author":{"@type":"Person","name":"Nimbial"},"publisher":{"@type":"Organization","name":"Nimbial"}}</script>
   </head>
   <body class="scrollable">
-    <div id="root"></div>
+    <div id="root"><link rel="preload" as="image" href="/assets/favicon.svg"/><link rel="preload" as="image" href="/assets/nimbial-logo.svg"/><div class="navbar"><a class="title" href="/">blog.<span class="title-domain">nimbial.com</span></a><div class="navbar-right"><button type="button" class="theme-switch" aria-label="Appearance: Match my device. Click to change." title="Appearance: Match my device"><span class="theme-dot" style="--pos:0" aria-hidden="true"></span><span class="theme-dot" style="--pos:1" aria-hidden="true"></span><span class="theme-dot" style="--pos:2" aria-hidden="true"></span><span class="theme-thumb" style="--pos:1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg></span></button><a href="https://www.nimbial.com"><img src="/assets/favicon.svg" width="25" style="border-radius:7px;outline:1.5px solid var(--text-color);outline-offset:-1px;margin-top:3px"/></a></div></div><div class="blog-post-container"><div class="article-header"><div class="article-title" text-style="display">What&#x27;s new in Symphony 1.1.5</div><div style="display:flex;flex-direction:row;align-items:center;gap:7px"><div class="article-author">by Nimbial</div><div style="font-weight:700">•</div><div class="article-date">5/20/2026</div></div><div class="article-description">How we&#x27;re shaping Symphony to be better for longer.</div></div><article class="markdown-body"><p><em>I&#x27;m excited to surprise you all with a mid-cycle update that completely transforms Symphony under the hood for the future.</em></p>
+<h2>Up to 90% Smaller App Footprint</h2>
+<p>That&#x27;s not clickbait! By changing the underlying runtime, and removing unnecessary files from the installer, Symphony&#x27;s overall footprint shrinks from around 700 MB—1.2 GB down all the way to just ~60 MB. That&#x27;s a best-case reduction in size by <strong>90%</strong> and realistically, the app size shrinks by around <strong>75%</strong> post-installation. The hope here is to reduce installation friction for users that are concerned about disk space.</p>
+<p>You&#x27;ll also see a vastly simpler installation experience — <strong>one file, one click.</strong></p>
+<h5>The one-click install will also be available for v1.1, but I&#x27;d recommend you get 1.1.5 anyway :)</h5>
+<h2>Over 50% Less RAM Usage</h2>
+<p>The same runtime jump also reduces the overall RAM usage of the app. By using OS-native rendering (as opposed to Electron&#x27;s bundled browser), we&#x27;re shaving off all the overhead; meaning no more unnecessary RAM bloat.</p>
+<h2>3x Faster Project Manager Ops</h2>
+<p>A small architectural change under the hood changes Symphony&#x27;s file-based IPC to socket-based, eliminating polling intervals to make all the PM interactions (loading project info, opening projects, exporting, converting, etc.) more than 300% faster on average.</p>
+<h2>Better Boot Experience</h2>
+<p>By using a lightning-fast Rust launcher, there&#x27;s far less delay in the visual feedback for launching Symphony. Additionally, we&#x27;re syncing the boot times of both the Project Manager and the Editor, meaning when then PM is up, the editor is too — no more waiting for the Editor to slowly boot after. This Rust launcher brings the boot experience of Symphony on-par with other industry-grade software.</p>
+<h2>Development: Better Dev Velocity</h2>
+<p>The underlying <em>backend</em> architecture is shifting from being cross-stack to being more python-centric; namely, the Project Manager&#x27;s backend (file operation management, etc.) is shifting to a Python core, just like the Editor, which makes development faster while keeping functionality the same. This will allow for shipping features faster in the future, including a potential revamped Editor UI to support instruments/plugins — developed faster than ever thought possible before, and sacrificing none of our original goals with the app.</p>
+<hr/>
+<p>1.1.5 is not a massive user-facing update on it&#x27;s own, per se, but it&#x27;s a genuine leap forward in how advanced, efficient, and elegant the system will be for supporting future changes. I can&#x27;t wait to see what you make!</p>
+<h4>ETA: June 2026</h4></article></div><footer class="footer"><div class="footer-column"><img src="/assets/nimbial-logo.svg" width="30" alt=""/><a class="footer-link" href="https://www.nimbial.com">nimbial.com</a><div>© 2026 Made by Nimbial</div></div><div class="footer-column"><div>Symphony</div><a class="footer-link" href="https://symphony.nimbial.com/">Home</a><a class="footer-link" href="https://symphony.nimbial.com/download">Download</a><a class="footer-link" href="https://symphony.nimbial.com/support">Donate</a></div><div class="footer-column"><div>Resources</div><a class="footer-link" href="/docs">Nimbial Docs</a><a class="footer-link" href="/blog">Blog</a></div><div class="footer-column"><div>Brand</div><a class="footer-link" href="/about">About</a><a class="footer-link" href="/contact">Contact</a><a class="footer-link" href="https://symphony.nimbial.com/ai">Nimbial &amp; AI</a></div><div class="footer-column"><div>Legal</div><a class="footer-link" href="https://symphony.nimbial.com/terms-and-conditions">Terms</a><a class="footer-link" href="https://symphony.nimbial.com/privacy-policy">Privacy</a></div></footer></div>
+    <script type="application/json" id="prerendered-post">{"slug":"whats_new_in_symphony_1_1_5","meta":{"img_url":"/assets/images/symphony_1_1_5_teaser.png","title":"What's new in Symphony 1.1.5","author":"Nimbial","category":"PRODUCT","date":"5/20/2026","description":"How we're shaping Symphony to be better for longer."},"markdown":"*I'm excited to surprise you all with a mid-cycle update that completely transforms Symphony under the hood for the future.*\r\n\r\n## Up to 90% Smaller App Footprint\r\n\r\nThat's not clickbait! By changing the underlying runtime, and removing unnecessary files from the installer, Symphony's overall footprint shrinks from around 700 MB—1.2 GB down all the way to just ~60 MB. That's a best-case reduction in size by **90%** and realistically, the app size shrinks by around **75%** post-installation. The hope here is to reduce installation friction for users that are concerned about disk space.\r\n\r\nYou'll also see a vastly simpler installation experience — **one file, one click.**\r\n\r\n##### The one-click install will also be available for v1.1, but I'd recommend you get 1.1.5 anyway :)\r\n\r\n## Over 50% Less RAM Usage\r\n\r\nThe same runtime jump also reduces the overall RAM usage of the app. By using OS-native rendering (as opposed to Electron's bundled browser), we're shaving off all the overhead; meaning no more unnecessary RAM bloat.\r\n\r\n## 3x Faster Project Manager Ops\r\n\r\nA small architectural change under the hood changes Symphony's file-based IPC to socket-based, eliminating polling intervals to make all the PM interactions (loading project info, opening projects, exporting, converting, etc.) more than 300% faster on average.\r\n\r\n## Better Boot Experience\r\n\r\nBy using a lightning-fast Rust launcher, there's far less delay in the visual feedback for launching Symphony. Additionally, we're syncing the boot times of both the Project Manager and the Editor, meaning when then PM is up, the editor is too — no more waiting for the Editor to slowly boot after. This Rust launcher brings the boot experience of Symphony on-par with other industry-grade software.\r\n\r\n## Development: Better Dev Velocity\r\n\r\nThe underlying *backend* architecture is shifting from being cross-stack to being more python-centric; namely, the Project Manager's backend (file operation management, etc.) is shifting to a Python core, just like the Editor, which makes development faster while keeping functionality the same. This will allow for shipping features faster in the future, including a potential revamped Editor UI to support instruments/plugins — developed faster than ever thought possible before, and sacrificing none of our original goals with the app.\r\n\r\n---\r\n\r\n1.1.5 is not a massive user-facing update on it's own, per se, but it's a genuine leap forward in how advanced, efficient, and elegant the system will be for supporting future changes. I can't wait to see what you make!\r\n\r\n#### ETA: June 2026\r\n\r\n"}</script>
   </body>
 </html>

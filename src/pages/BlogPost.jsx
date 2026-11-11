@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import IPhoneIntersectionProjectionGraph from "@/components/IPhoneIntersectionProjectionGraph";
 import IPhoneParamCapacityGraph from "@/components/IPhoneParamCapacityGraph";
 import LLMStatsOpenModelsGraph from "@/components/LLMStatsOpenModelsGraph";
@@ -43,34 +44,61 @@ function resolveMarkdownImageSrc(src) {
   return `/assets/images/${imagePath}`;
 }
 
-function BlogPost() {
+const DEFAULT_DESCRIPTION = "Read it on the Nimbial Blog";
+
+// Built pages carry the article in a JSON script so the first render already
+// has it (no blank flash before the fetch finishes).
+function readPrerenderedPost(name) {
+  if (typeof document === "undefined") return null;
+  try {
+    const el = document.getElementById("prerendered-post");
+    const data = el ? JSON.parse(el.textContent) : null;
+    return data?.slug === name ? data : null;
+  } catch {
+    return null;
+  }
+}
+
+function applyOG(metaData) {
+  updateOG({
+    type: "article",
+    title: metaData.title,
+    description: metaData.description || DEFAULT_DESCRIPTION,
+    image: metaData.img_url,
+    imageWidth: metaData.og_image_width,
+    imageHeight: metaData.og_image_height,
+    twitterCard: metaData.twitter_card,
+  });
+}
+
+function BlogPost({ initialPost }) {
   const { name } = useParams();
-  const [content, setContent] = useState("");
-  const [meta, setMeta] = useState(null);
+  const [preloaded] = useState(() => initialPost ?? readPrerenderedPost(name));
+  const [content, setContent] = useState(preloaded?.markdown ?? "");
+  const [meta, setMeta] = useState(preloaded?.meta ?? null);
   const markdownParts = content.split(MARKDOWN_COMPONENT_PATTERN);
 
   useEffect(() => {
+    let cancelled = false;
+
     async function loadArticle() {
+      if (preloaded?.slug === name) {
+        applyOG(preloaded.meta);
+        return;
+      }
+
       try {
         // Load the JSON metadata
         const metaRes = await fetch(`/blog-posts/${name}.json`);
         const metaData = await metaRes.json();
+        if (cancelled) return;
         setMeta(metaData);
-
-        // Update Open Graph/Twitter tags for this article
-        updateOG({
-          type: "article",
-          title: metaData.title,
-          description: "Read it on the Nimbial Blog",
-          image: metaData.img_url,
-          imageWidth: metaData.og_image_width,
-          imageHeight: metaData.og_image_height,
-          twitterCard: metaData.twitter_card,
-        });
+        applyOG(metaData);
 
         // Load the markdown file
         const mdRes = await fetch(`/blog-posts/${name}.md`);
         const mdText = await mdRes.text();
+        if (cancelled) return;
         setContent(mdText);
       } catch (error) {
         console.error("Error loading article:", error);
@@ -80,10 +108,11 @@ function BlogPost() {
     loadArticle();
 
     return () => {
+      cancelled = true;
       // Restore defaults when navigating away
       resetOGToDefaults();
     };
-  }, [name]);
+  }, [name, preloaded]);
 
   return (
     <>
@@ -155,6 +184,7 @@ function BlogPost() {
           })}
         </article>
       </div>
+      <Footer />
     </>
   );
 }

@@ -58,6 +58,17 @@
   translate: 0 -90px;
 }
 
+/* Keep the subtitle tied to the left-aligned mobile title:
+   same left/right padding as .title-not-arc */
+@media (max-width: 1000px) {
+  .subtitle {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 40px 0 50px;
+    text-align: left;
+  }
+}
+
 .title-bar {
   margin-top: 0px;
   width: calc(min(100% - 100px, 1000px));
@@ -66,31 +77,108 @@
   letter-spacing: -0.0px;
   box-sizing: border-box;
   font-family: 'Instrument Serif', serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+/* "Latest ↑" — the whole label is the toggle */
+.sort-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.sort-toggle:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.sort-arrow {
+  transition: transform 0.3s ease;
+}
+
+.sort-arrow.flipped {
+  transform: rotate(180deg);
+}
+
+/* Small search field across from "Latest" */
+.post-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 220px;
+  max-width: 100%;
+  padding: 7px 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--tinted-bg-color);
+  color: #777;
+  cursor: text;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.post-search:focus-within {
+  border-color: #7778;
+}
+
+.post-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+  font: inherit;
+}
+
+.no-results {
+  padding: 40px 0;
+  color: #777;
+  font-size: 1rem;
+}
+
+/* On mobile, shrink the section heading so it doesn't compete with the title */
+@media (max-width: 1000px) {
+  .title-bar {
+    font-size: 2.25rem;
+  }
 }
 
 .homepage-grid-container {
-  mask-image: linear-gradient(90deg, #ffff 95%, #0000 100%);
   width: calc(min(100% - 100px, 1000px));
   margin-bottom: 10rem;
 }
 
+/* Responsive grid: as many 260px+ columns as fit (3 at full width, 1 on phones) */
 .homepage-grid {
-  display: flex;
-  overflow-x: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 20px;
-  padding: 20px 50px 20px 0;
+  padding: 20px 0;
   box-sizing: border-box;
 }
 
 .blog-card {
-  flex: 0 0 auto; /* do NOT shrink; use width as fixed */
+  min-width: 0;
+  box-sizing: border-box;
   background: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   text-align: left;
   padding: 20px;
-  width: 250px;
   cursor: pointer;
   transition: filter 0.2s;
   letter-spacing: 0.2px;
@@ -102,8 +190,8 @@
 
 .blog-card-image {
   background: #eee;
-  width: 250px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 5 / 3; /* same shape as the old fixed 250x150 */
   overflow: hidden;
   margin-bottom: 15px;
 }

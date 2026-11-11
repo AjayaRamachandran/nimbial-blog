@@ -1,4 +1,4 @@
-*I'm excited to surprise you all with a surprise mid-cycle update that completely transforms Symphony under the hood for the future.*
+*I'm excited to surprise you all with a mid-cycle update that completely transforms Symphony under the hood for the future.*
 
 ## Up to 90% Smaller App Footprint
 

@@ -33,6 +33,10 @@
   padding: 5px 10px;
 }
 
+.title-domain {
+  opacity: 0.5;
+}
+
 .navbar-right {
   display: flex;
   align-items: center;
@@ -40,44 +44,67 @@
   gap: 24px;
 }
 
-/* Dark mode switch */
-.dm-switch {
+/* Appearance switch: three-position slider (light | system | dark) */
+/* Geometry: 3px inset, 24px thumb, 16px between positions
+   → width = 3 + 24 + 16 + 16 + 3 = 62px, height = 3 + 24 + 3 = 30px */
+.theme-switch {
+  --inset: 3px;
+  --thumb: 24px;
+  --step: 16px;
   position: relative;
   display: inline-block;
-  width: 44px;
-  height: 24px;
-}
-
-.dm-switch input {
-  display: none;
-}
-
-.dm-slider {
-  position: absolute;
-  inset: 0;
-  background: #cfcfcf;
+  flex-shrink: 0;
+  width: calc(var(--inset) * 2 + var(--thumb) + var(--step) * 2);
+  height: calc(var(--inset) * 2 + var(--thumb));
+  padding: 0;
   border-radius: 999px;
-  transition: background 0.2s ease;
+  background: #cfcfcf;
   box-shadow: inset 0 0 0 1px #0002;
+  transition: background 0.3s ease;
 }
 
-.dm-slider::before {
-  content: "";
+/* Position markers on the rail, hidden under the thumb when it sits on one */
+.theme-dot {
   position: absolute;
-  height: 20px;
-  width: 20px;
-  left: 2px;
-  top: 2px;
-  background: #ffffff;
+  top: 50%;
+  left: calc(var(--inset) + var(--thumb) / 2 + var(--pos) * var(--step));
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  box-shadow: 0 1px 2px #0003;
-  transition: transform 0.25s ease;
+  background: #0005;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s ease;
 }
 
-.dm-switch input:checked + .dm-slider {
+.dark-mode .theme-dot {
+  background: #fff6;
+}
+
+.dark-mode .theme-switch {
   background: #555;
 }
 
-.dm-switch input:checked + .dm-slider::before {
-  transform: translateX(20px);
+.theme-switch:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+.theme-thumb {
+  position: absolute;
+  z-index: 1;
+  top: var(--inset);
+  left: var(--inset);
+  width: var(--thumb);
+  height: var(--thumb);
+  box-sizing: border-box;
+  padding: 6px; /* 24px thumb, 12px icon */
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px #0003;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1c1c1c;
+  transform: translateX(calc(var(--pos, 1) * var(--step)));
+  transition: transform 0.25s ease;
 }

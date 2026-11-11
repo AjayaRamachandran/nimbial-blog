@@ -6,6 +6,21 @@
     <title>Nimbial Blog</title>
     <link rel="icon" type="image/svg" href="/assets/favicon.svg" />
 
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var dark = false;
+        try {
+          var t = localStorage.getItem("theme");
+          if (!t && localStorage.getItem("darkMode") === "on") t = "dark";
+          dark = t === "dark" ||
+            (t !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        } catch (e) {}
+        if (dark) document.documentElement.classList.add("dark-mode");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+
     <!-- Open Graph Meta Tags (defaults for homepage) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nimbial - Blog" />
@@ -21,8 +36,8 @@
     <meta name="twitter:title" content="Read it on the Nimbial Blog" />
     <meta name="twitter:description" content="Read it on the Nimbial Blog" />
     <meta name="twitter:image" content="https://blog.nimbial.com/assets/link-preview.png" />
-    <script type="module" crossorigin src="/assets/index-PIcVY58B.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ByctFou8.css">
+    <script type="module" crossorigin src="/assets/index-CueS7eM5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CB_Js4su.css">
   </head>
   <body class="scrollable">
     <div id="root"></div>

@@ -1,12 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ArrowUp, Search } from "lucide-react";
 import "./homepage.css";
 
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { DarkModeContext } from "@/context/DarkModeContext";
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
+  const [reversed, setReversed] = useState(false);
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { darkMode } = useContext(DarkModeContext);
 
@@ -32,6 +36,19 @@ function HomePage() {
 
     loadPosts();
   }, []);
+
+  // Live, case-insensitive filter on title + description, then optional reverse.
+  const visiblePosts = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const filtered = q
+      ? posts.filter((post) =>
+          `${post.title ?? ""} ${post.description ?? ""}`
+            .toLowerCase()
+            .includes(q),
+        )
+      : posts;
+    return reversed ? [...filtered].reverse() : filtered;
+  }, [posts, query, reversed]);
 
   return (
     <>
@@ -60,11 +77,43 @@ function HomePage() {
       <div className="subtitle">
         Learn about our products and our takes on tech.
       </div>
-      <div className="title-bar">Latest</div>
+      <div className="title-bar">
+        <button
+          type="button"
+          className="sort-toggle"
+          onClick={() => setReversed((r) => !r)}
+          aria-label={reversed ? "Showing oldest first. Show latest first" : "Showing latest first. Show oldest first"}
+          title={reversed ? "Oldest first" : "Latest first"}
+        >
+          <span>Latest</span>
+          <ArrowUp
+            className={"sort-arrow" + (reversed ? " flipped" : "")}
+            size="0.6em"
+            strokeWidth={2.25}
+            aria-hidden="true"
+          />
+        </button>
+
+        <label className="post-search">
+          <Search size={15} strokeWidth={2.25} aria-hidden="true" />
+          <input
+            type="search"
+            placeholder="Search articles"
+            aria-label="Search articles"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </label>
+      </div>
 
       <div className="homepage-grid-container">
-        <div className="homepage-grid scrollable">
-          {posts.map((post) => (
+        {posts.length > 0 && visiblePosts.length === 0 && (
+          <div className="no-results">
+            No articles match your search. Try a different word.
+          </div>
+        )}
+        <div className="homepage-grid">
+          {visiblePosts.map((post) => (
             <a
               key={post.slug}
               className="blog-card"
@@ -95,6 +144,7 @@ function HomePage() {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
